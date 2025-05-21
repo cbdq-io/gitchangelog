@@ -110,7 +110,7 @@ Date:   Mon Apr 28 08:46:04 2025 +0100
 Then running the following command:
 
 ```shell
-docker run --rm --volume "${PWD}:/mnt/source" ghcr.io/cbdq-io/gitchangelog
+docker run --quiet --rm --volume "${PWD}:/mnt/source" ghcr.io/cbdq-io/gitchangelog
 ```
 
 Will produce the following output:
