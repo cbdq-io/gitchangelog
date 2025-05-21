@@ -149,3 +149,18 @@ Will produce the following output:
 
 * Deploy on merge. [Ben Dalling]
 ```
+
+## Skipping Commit Messages in the Change Log
+
+By default, any message that doesn't match the patters mentioned above will
+be added to a section called *Other*.  If you wish to commit a message that
+you don't want in the change log, the gitchangelog package provides a number
+of methods to achieve this.  None of the commit messages below will be
+added to the change log:
+
+- `fix: dev: MUST NOT BE IN CHANGE LOG.`
+- `fix: MUST NOT BE IN CHANGE LOG (II). !minor`
+- `fix: MUST NOT BE IN CHANGE LOG (III). !cosmetic`
+- `fix: MUST NOT BE IN CHANGE LOG (III). !wip`
+
+Please note that blank commit messages are also ignored.
