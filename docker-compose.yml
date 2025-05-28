@@ -1,0 +1,5 @@
+---
+services:
+  gitchangelog:
+    build: .
+    image: ghcr.io/cbdq-io/gitchangelog:latest
