@@ -3,3 +3,5 @@ services:
   gitchangelog:
     build: .
     image: ghcr.io/cbdq-io/gitchangelog:latest
+    volumes:
+      - ".:/mnt/source:ro"

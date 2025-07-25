@@ -2,7 +2,7 @@
 
 TAG = 0.1.2
 
-all: lint build
+all: lint build test
 
 build:
 	docker compose build
@@ -14,3 +14,6 @@ lint:
 
 tag:
 	@echo ${TAG}
+
+test:
+	docker compose run --remove-orphans --rm gitchangelog > CHANGELOG.md
