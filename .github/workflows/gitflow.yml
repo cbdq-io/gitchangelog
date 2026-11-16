@@ -20,13 +20,15 @@ permissions:
 
 jobs:
   GitFlow:
+    # Skip if the run was triggered by Dependabot or the branch is dependabot/*
+    if: ${{ github.actor != 'dependabot[bot]' && !startsWith(github.head_ref || '', 'dependabot/') && !startsWith(github.ref, 'refs/heads/dependabot/') }}
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: Set up Python 3
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7
         with:
           python-version: 3.12
 
@@ -38,7 +40,7 @@ jobs:
         run: echo "RELEASE_CANDIDATE_TAG=$( make tag )" >> $GITHUB_OUTPUT
 
       - name: Git Flow Action
-        uses: cbdq-io/gitflow-action@v1
+        uses: cbdq-io/gitflow-action@1.1.2
         env:
           # Setting this environment variable means we can debug by re-running
           # workflows and ticking "Enable debug logging".
@@ -48,3 +50,4 @@ jobs:
         with:
           # Set the release candidate to be the output of the previous step.
           release-candidate: ${{ steps.version.outputs.RELEASE_CANDIDATE_TAG }}
+          post-release-pr-assignees: cbdqbot

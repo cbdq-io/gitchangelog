@@ -1,4 +1,4 @@
-FROM python:3.13-alpine
+FROM python:3.15-alpine
 
 ENV GITCHANGELOG_CONFIG_FILENAME="/usr/local/etc/gitchangelog.rc"
 
